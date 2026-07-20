@@ -47,13 +47,13 @@ Real examples:
 - `feature/#603-validation_error_unhandledrejection`
 - `feature/#439_migrate_shema_policy`
 
-**Do not create `fix/` branches.** A few exist in the history (e.g.
-`fix/database-info-riot7`), but they are not to be used going forward — a bug
-fix gets a `feature/#<issue>_...` branch like anything else.
+**Default to `feature/`, including for bug fixes.** `fix/` branches exist in the
+history (e.g. `fix/database-info-riot7`) and are tolerated, but do not reach for
+one by choice — propose `feature/#<issue>_...` unless asked otherwise.
 
-**Always reference an issue number.** If there is no issue yet, open one first
-rather than branching without it. Descriptions are lowercase ASCII, words joined
-by `_` or `-`.
+**Reference an issue number.** Nearly every branch does. If there is no issue
+yet, opening one first is the norm. Descriptions are lowercase ASCII, words
+joined by `_` or `-`.
 
 ## Commit messages
 
