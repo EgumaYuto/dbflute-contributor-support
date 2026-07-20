@@ -12,7 +12,7 @@ DBFlute のコントリビュート活動を支援する [Claude Code](https://c
 | --- | --- |
 | **`dbflute-catchup`** | 「今週何があった？」— Slack と GitHub を突き合わせて状況を報告し、放置されている PR や脆弱性を洗い出す |
 | **`dbflute-intro-contribute`** | **`dbflute-intro` 限定。** ブランチ命名・コミットメッセージ・Issue 作成（ラベル、タイトル規約）・PR の出し方 |
-| **`dbflute-slack`** | dbflute Slack の読み方。チャンネル ID マップ、人物対応、注意点 |
+| **`dbflute-slack`** | dbflute Slack の読み方。チャンネル ID マップ、注意点 |
 
 ## 前提
 

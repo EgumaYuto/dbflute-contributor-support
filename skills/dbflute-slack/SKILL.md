@@ -33,20 +33,6 @@ Re-derive with `slack_list_channels` if one stops resolving.
 Activity is concentrated in `intro_committers_ja` plus the two bot channels.
 The other channels are often empty for a given week — that is normal, not a bug.
 
-## People
-
-Slack handles differ from GitHub logins. Map before cross-referencing:
-
-| Slack | GitHub | Note |
-| --- | --- | --- |
-| `jflute (kubo)` / `@dbflute` | `jflute` | DBFlute author, runs the 勉強会 |
-| `shiny` / `@shintaronogi` | `shinyonogi` | |
-| `たなりょ` / `@tana0724ka` | — | |
-| — | `hedo112`, `ryoooo724`, `EgumaYuto` | seen in commits/PRs |
-
-This table is incomplete — confirm with `slack_list_users` before asserting an
-identity, and say so when a mapping is a guess.
-
 ## How to work
 
 1. **For a time range** ("this week", "since Monday") use `slack_get_activity`,
@@ -54,7 +40,8 @@ identity, and say so when a mapping is a guess.
    to threads started earlier are silently missed — and in this workspace most
    real discussion happens inside daily わいわいスレッド threads.
 2. **For a keyword** use `slack_search` with operators: `in:#intro_committers_ja`,
-   `from:@dbflute`, `after:2026-07-01`. Cite the returned `permalink`.
+   `from:@<handle>`, `after:2026-07-01`. Cite the returned `permalink`.
+   Resolve handles with `slack_list_users` rather than guessing.
 3. **Bot channels are the audit trail.** `intro_github_notify` and
    `intro_ci_notify` tell you what actually landed; the human channels tell you
    why. Read both before concluding what happened.
