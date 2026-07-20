@@ -1,26 +1,32 @@
 ---
-name: dbflute-contribute
-description: DBFlute contribution conventions — branch naming, commit message style, Issue creation (labels, title prefixes), and pull request flow for repos in the dbflute GitHub organization. Use when creating a branch, writing a commit, opening an Issue or PR, or reviewing whether a change follows project convention.
+name: dbflute-intro-contribute
+description: DBFlute Intro contribution conventions — branch naming, commit message style, Issue creation (labels, title prefixes), and pull request flow for the dbflute/dbflute-intro repository. Use when creating a branch, writing a commit, opening an Issue or PR, or reviewing whether a change follows project convention in dbflute-intro.
 ---
 
-# Contributing to DBFlute
+# Contributing to DBFlute Intro
+
+**Scope: `dbflute/dbflute-intro` only.** Other repos in the dbflute organization
+(`dbflute-core`, `dbflute-document`, ...) are deliberately out of scope — their
+conventions have not been verified. Do not apply the rules below to them; if
+asked to contribute elsewhere, say the conventions are unconfirmed and check
+that repo's own history first.
 
 Conventions below were derived from the actual history of `dbflute/dbflute-intro`
 (merged PRs, commit log, live labels), not from a written contributing guide —
-**the repos have no CONTRIBUTING.md and no Issue template**. Treat them as
+**the repo has no CONTRIBUTING.md and no Issue template**. Treat them as
 observed practice. When a maintainer contradicts them, the maintainer wins.
 
-## Repos
+## The repo
 
 | Repo | Base branch | Notes |
 | --- | --- | --- |
-| `dbflute/dbflute-intro` | `develop` | Most active. Java/Kotlin backend + Riot frontend |
-| `dbflute/dbflute-core` | `develop` | The DBFlute engine itself |
-| `dbflute/dbflute-document` | — | Docs |
-| `dbflute-test/dbflute-test-dbms-mysql` | `master` | Test harness (different org) |
+| `dbflute/dbflute-intro` | `develop` | Java backend + Riot frontend. CI: CircleCI |
 
-**Base branch is `develop`, not `master`/`main`,** for the two active repos.
-Always confirm before branching: `gh repo view <repo> --json defaultBranchRef`.
+**Base branch is `develop`, not `master`/`main`.** Confirm before branching:
+
+```bash
+gh repo view dbflute/dbflute-intro --json defaultBranchRef
+```
 
 ## Branches live in the org repo, not a fork
 

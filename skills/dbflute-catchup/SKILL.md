@@ -10,7 +10,7 @@ alone is accurate. Slack shows intent and discussion; GitHub shows what actually
 landed and what is rotting. The gaps between them are the interesting part.
 
 Requires the `slack-mcp` server (`slack_*` tools) and an authenticated `gh`.
-See also the `dbflute-slack` and `dbflute-contribute` skills.
+See also the `dbflute-slack` and `dbflute-intro-contribute` skills.
 
 ## Procedure
 

@@ -2,7 +2,7 @@
 
 DBFlute のコントリビュート活動を支援する [Claude Code](https://claude.com/claude-code) Skill 集です。
 
-`dbflute` GitHub organization（`dbflute-intro` など）への貢献を対象にしています。
+**現在の対象リポジトリは `dbflute/dbflute-intro` のみです。** `dbflute-core` などは規約を検証していないため、意図的にスコープ外にしています（対象を広げる際は、そのリポジトリの履歴から規約を起こし直してください）。
 
 > ⚠️ **試験段階のリポジトリです。** 個人アカウント配下で運用しており、dbflute organization の公式ドキュメントではありません。ここに書かれた規約は、リポジトリの実際の履歴（マージ済み PR・コミットログ・ラベル）から観測したものであり、公式の CONTRIBUTING.md に基づくものではありません（そもそも存在しません）。
 
@@ -11,7 +11,7 @@ DBFlute のコントリビュート活動を支援する [Claude Code](https://c
 | Skill | 用途 |
 | --- | --- |
 | **`dbflute-catchup`** | 「今週何があった？」— Slack と GitHub を突き合わせて状況を報告し、放置されている PR や脆弱性を洗い出す |
-| **`dbflute-contribute`** | ブランチ命名・コミットメッセージ・Issue 作成（ラベル、タイトル規約）・PR の出し方 |
+| **`dbflute-intro-contribute`** | **`dbflute-intro` 限定。** ブランチ命名・コミットメッセージ・Issue 作成（ラベル、タイトル規約）・PR の出し方 |
 | **`dbflute-slack`** | dbflute Slack の読み方。チャンネル ID マップ、人物対応、注意点 |
 
 ## 前提
@@ -49,7 +49,7 @@ CLAUDE_SKILLS_DIR=/path/to/project/.claude/skills ./install.sh
 → dbflute-catchup
 
 Issue #615 に対応するブランチを切りたい
-→ dbflute-contribute
+→ dbflute-intro-contribute
 
 #intro_committers_ja で最近話されていることは？
 → dbflute-slack
@@ -59,7 +59,7 @@ Issue #615 に対応するブランチを切りたい
 
 ## 規約情報の鮮度について
 
-`dbflute-contribute` に書かれたブランチ名やラベルの規約は、ある時点の `dbflute-intro` の履歴から起こしたものです。**プロジェクトの実態が変われば古くなります。** 迷ったら実際の履歴を確認してください:
+`dbflute-intro-contribute` に書かれたブランチ名やラベルの規約は、ある時点の `dbflute-intro` の履歴から起こしたものです。**プロジェクトの実態が変われば古くなります。** 迷ったら実際の履歴を確認してください:
 
 ```bash
 gh pr list --repo dbflute/dbflute-intro --state merged --limit 25 --json headRefName,title
