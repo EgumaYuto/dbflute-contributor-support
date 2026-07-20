@@ -37,23 +37,13 @@ the local convention.
 
 ### Naming
 
+Branches start with `feature/#<issue>`, including for bug fixes.
+
 ```
-feature/#<issue>_<short_description>     # use this
-feature/#<issue>-<short-description>     # also seen; both separators appear
+feature/#<issue>_<short_description>
 ```
 
-Real examples:
-- `feature/#615_node.js_version_update`
-- `feature/#603-validation_error_unhandledrejection`
-- `feature/#439_migrate_shema_policy`
-
-**Default to `feature/`, including for bug fixes.** `fix/` branches exist in the
-history (e.g. `fix/database-info-riot7`) and are tolerated, but do not reach for
-one by choice — propose `feature/#<issue>_...` unless asked otherwise.
-
-**Reference an issue number.** Nearly every branch does. If there is no issue
-yet, opening one first is the norm. Descriptions are lowercase ASCII, words
-joined by `_` or `-`.
+Descriptions are lowercase ASCII, words joined by `_` or `-`.
 
 ## Commit messages
 
