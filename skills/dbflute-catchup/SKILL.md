@@ -9,8 +9,10 @@ Produces a situation report by reading **both** Slack and GitHub, because neithe
 alone is accurate. Slack shows intent and discussion; GitHub shows what actually
 landed and what is rotting. The gaps between them are the interesting part.
 
+Scope is the whole `dbflute` organization, not one repository.
+
 Requires the `slack-mcp` server (`slack_*` tools) and an authenticated `gh`.
-See also the `dbflute-slack` and `dbflute-intro-contribute` skills.
+See also the `dbflute-slack` skill for the channel map.
 
 ## Procedure
 
@@ -23,32 +25,45 @@ node -e 'console.log(Math.floor(new Date("YYYY-MM-DDT00:00:00+09:00").getTime()/
 ### 1. Slack
 
 Call `slack_get_activity` (NOT `slack_get_history` — it misses thread replies)
-for each channel in the `dbflute-slack` channel map. In practice only
-`intro_committers_ja`, `intro_github_notify`, `intro_ci_notify` and
-`intro_committers_playground` carry traffic; the rest are usually empty.
+for each channel in the `dbflute-slack` channel map. Traffic concentrates in a
+few committer and bot channels while the rest are often empty for a given week;
+check the map rather than assuming which ones matter this time.
 
 ### 2. GitHub
 
+Start org-wide, then drill into whichever repos actually moved.
+
 ```bash
+# which repos exist and when they were last touched
+gh repo list dbflute --limit 100 --json name,updatedAt,defaultBranchRef
+
 # PRs touched in the period, across the org
 gh search prs --owner dbflute --updated ">=<DATE>" --limit 40 \
   --json number,title,repository,state,author,updatedAt
 
-# commits actually authored in the period (per repo)
-gh api "repos/dbflute/dbflute-intro/commits?sha=develop&since=<DATE>T00:00:00Z" \
-  --jq '.[] | "\(.commit.author.date[:16]) \(.commit.author.name) | \(.commit.message | split("\n")[0])"'
-
-# issues touched
+# issues touched, across the org
 gh search issues --owner dbflute --updated ">=<DATE>" --limit 40 \
   --json number,title,repository,state,author
+```
 
-# review + CI state of each open PR
-gh pr view <N> --repo dbflute/dbflute-intro \
+Then, for each repo that shows activity (`<repo>`, with `<branch>` from
+`defaultBranchRef` — it is not always `main`):
+
+```bash
+# commits actually authored in the period
+gh api "repos/dbflute/<repo>/commits?sha=<branch>&since=<DATE>T00:00:00Z" \
+  --jq '.[] | "\(.commit.author.date[:16]) \(.commit.author.name) | \(.commit.message | split("\n")[0])"'
+
+# review + CI state of an open PR
+gh pr view <N> --repo dbflute/<repo> \
   --json number,title,mergeable,reviewDecision,statusCheckRollup
 
 # security debt (NOT visible in Slack at all)
-gh api repos/dbflute/dbflute-intro/dependabot/alerts --paginate
+gh api repos/dbflute/<repo>/dependabot/alerts --paginate
 ```
+
+Dependabot alerts are worth checking even on repos with no activity in the
+period — a dormant repo accumulates them silently.
 
 ### 3. Cross-check, then report
 
@@ -76,13 +91,17 @@ verify before quoting a number.
 mid-conversation. Resolve it with `gh pr view` to get the title, linked issue,
 and diff size — the Slack message alone does not say what the PR does.
 
-**Discussion with no GitHub follow-through.** A decision reached in
-`#intro_committers_ja` with no issue or PR afterwards is worth surfacing as a
-loose end, as is an "I'll tell you later" that never got a follow-up.
+**Discussion with no GitHub follow-through.** A decision reached in a committer
+channel with no issue or PR afterwards is worth surfacing as a loose end, as is
+an "I'll tell you later" that never got a follow-up.
 
-**Local clones drifting.** `git log -1 --format='%ad' --date=short` per repo in
-the dbflute working directory, compared against the remote default branch, shows
-whether the working copies are stale before starting work.
+**Repos nobody mentions.** Slack traffic skews heavily toward whichever project
+is active right now. A repo can go quiet for months while still carrying open
+PRs and security alerts. Enumerate the org rather than following Slack alone.
+
+**Local clones drifting.** `git log -1 --format='%ad' --date=short` per cloned
+repo, compared against the remote default branch, shows whether the working
+copies are stale before starting work.
 
 ## Reporting
 
