@@ -34,11 +34,25 @@ cd dbflute-contributor-support
 
 `~/.claude/skills/` にシンボリックリンクを張るので、以後は `git pull` するだけで最新化されます。反映には Claude Code の再起動が必要です。
 
-特定のプロジェクト配下だけで使いたい場合:
+### 特定のディレクトリでだけ有効にする（推奨）
+
+これらの Skill は DBFlute の作業中しか使いません。全プロジェクトで読み込ませず、作業ディレクトリ配下でだけ有効にできます。
 
 ```bash
-CLAUDE_SKILLS_DIR=/path/to/project/.claude/skills ./install.sh
+CLAUDE_SKILLS_DIR=<作業ディレクトリ>/.claude/skills ./install.sh
 ```
+
+指定したディレクトリで作業するときだけ Skill が現れます。
+
+> **確認方法:** そのディレクトリで Claude Code を起動し直し、`/` を入力して `dbflute-catchup` などが候補に出れば有効です。
+>
+> **注意:** 有効になるのは Claude Code がそのディレクトリをプロジェクトルートとして起動された場合です。個別リポジトリの中から起動して Skill が出てこない場合は、そのリポジトリ配下に入れてください。
+>
+> その場合、**`.claude/` を upstream にコミットしないよう** `.gitignore` ではなく `.git/info/exclude` に追記してください（`.gitignore` を編集すると差分が PR に混ざります）:
+>
+> ```bash
+> echo '.claude/' >> <リポジトリ>/.git/info/exclude
+> ```
 
 ## 使い方
 
