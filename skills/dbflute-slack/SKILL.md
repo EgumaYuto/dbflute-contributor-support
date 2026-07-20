@@ -25,7 +25,7 @@ Re-derive with `slack_list_channels` if one stops resolving.
 | `CRUFWK4L9` | `intro_github_notify` | **Bot.** GitHub PR/push/merge notifications |
 | `CRTNNA35H` | `intro_ci_notify` | **Bot.** CircleCI results |
 | `C04PR5F4LG6` | `intro_committers_playground` | Casual / experiments |
-| `CAPMGTU6P` | `jflute_park_ja` | jflute's channel |
+| `CAPMGTU6P` | `jflute_park_ja` | Personal channel; low traffic |
 | `CAPPW1NUA` | `general` | Rarely used |
 | `CAQR9SZ8F` | `random` | Rarely used |
 | `GAQRQTHGA` | `zone_intronzon_ja` | Private |

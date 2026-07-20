@@ -55,12 +55,18 @@ there genuinely is not one. Descriptions are lowercase ASCII, words joined by
 
 ## Commit messages
 
-Two styles coexist in the log. Both are accepted; **match the surrounding work
-or the maintainer you are working with** rather than imposing one.
+Two styles coexist in the log. Both are accepted; **match the recent history of
+the area you are touching** rather than imposing one.
 
 ```
-#615 fix:settings.jsonにトリムのしない設定を追加     # issue first (hedo112 style)
-エラーオーバーレイのコメントを見直し #603             # issue last (jflute style)
+#615 fix:settings.jsonにトリムのしない設定を追加     # style A: issue number first
+エラーオーバーレイのコメントを見直し #603             # style B: issue number last
+```
+
+Check which style the surrounding commits use:
+
+```bash
+git log develop --format='%s' -20
 ```
 
 - The issue number is present either way — do not omit it.
