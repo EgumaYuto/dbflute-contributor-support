@@ -38,20 +38,22 @@ the local convention.
 ### Naming
 
 ```
-feature/#<issue>_<short_description>     # most common
-feature/#<issue>-<short-description>     # also used; both separators appear
-fix/<short-description>                  # occasionally, without an issue number
+feature/#<issue>_<short_description>     # use this
+feature/#<issue>-<short-description>     # also seen; both separators appear
 ```
 
 Real examples:
 - `feature/#615_node.js_version_update`
 - `feature/#603-validation_error_unhandledrejection`
 - `feature/#439_migrate_shema_policy`
-- `fix/database-info-riot7`
 
-Prefer `feature/#<issue>_<desc>` and **always reference an issue number** unless
-there genuinely is not one. Descriptions are lowercase ASCII, words joined by
-`_` or `-`.
+**Do not create `fix/` branches.** A few exist in the history (e.g.
+`fix/database-info-riot7`), but they are not to be used going forward — a bug
+fix gets a `feature/#<issue>_...` branch like anything else.
+
+**Always reference an issue number.** If there is no issue yet, open one first
+rather than branching without it. Descriptions are lowercase ASCII, words joined
+by `_` or `-`.
 
 ## Commit messages
 
